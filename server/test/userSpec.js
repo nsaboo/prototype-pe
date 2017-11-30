@@ -1,3 +1,5 @@
+process.env.PORT = 3001;
+
 const server = require('../index.js');
 const supertest = require('supertest');
 const setup = require('../database/setup');
