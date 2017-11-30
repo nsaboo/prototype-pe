@@ -4,6 +4,7 @@
   "description": "prototype-pe",
   "main": "index.js",
   "scripts": {
+    "dev-react": "webpack -d --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
