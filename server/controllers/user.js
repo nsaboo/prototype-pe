@@ -15,7 +15,7 @@ module.exports = {
 
     models.user.create(user)
       .then((data) => {
-        res.status(200).send(data);
+        res.status(201).send(data);
       })
       .catch((err) => {
         res.status(404).send('Error Occurred');

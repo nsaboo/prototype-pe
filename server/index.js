@@ -15,3 +15,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', router);
 
 app.listen(PORT, () => {});
+
+module.exports = app;
