@@ -5,7 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev-react": "webpack -d --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev-start": "nodemon server/index.js",
+    "lint": "eslint server",
+    "unit": "NODE_ENV=test mocha server/test/*Spec.js",
+    "coverage": "NODE_ENV=test istanbul cover --report lcov --report json --report text --report html _mocha  -r server/test/*Spec.js",
+    "test": "NODE_ENV=test npm run-script lint && npm run-script unit && npm run coverage",
+    "start": "node server/index.js",
+    "postinstall": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -24,7 +30,8 @@
     "mysql2": "^1.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "sequelize": "^4.23.4"
+    "sequelize": "^4.23.4",
+    "supertest": "^3.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -38,9 +45,8 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.5.1",
     "istanbul": "^0.4.5",
-    "mocha": "^4.0.1",
+    "mocha": "^3.5.3",
     "nodemon": "^1.12.1",
-    "supertest": "^3.0.0",
     "webpack": "^3.9.0"
   }
 }
