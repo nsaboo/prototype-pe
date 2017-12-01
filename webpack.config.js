@@ -2,10 +2,12 @@ const path = require('path');
 
 module.exports = {
   context: path.join(__dirname, 'client'),
-  entry: './index.jsx',
+  entry: {
+    app: './index.jsx',
+  },
   output: {
     path: path.join(__dirname, 'public/dist'),
-    filename: 'prototype-pe.bundle.js'
+    filename: 'prototype-pe.bundle.js',
   },
   module: {
     rules: [
@@ -13,8 +15,8 @@ module.exports = {
         test: /\.jsx$/,
         exclude: /node_modules/,
         use: 'babel-loader',
-      }
-    ]
+      },
+    ],
   },
   resolve: {
     modules: [
