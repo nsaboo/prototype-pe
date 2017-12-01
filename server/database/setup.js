@@ -13,11 +13,22 @@ const dropDatabase = () => sequelize.query(`DROP DATABASE IF EXISTS ${ENV_CONFIG
 const sync = () => dropDatabase()
   .then(() => createDatabase())
   .then(() => models.user.sync())
+  .then(() => models.patient.sync())
+  .then(() => models.hospital.sync())
+  .then(() => models.doctor.sync())
+  .then(() => models.laboratory.sync())
+  .then(() => models.pharmacy.sync())
+  .then(() => models.prescription.sync())
+  .then(() => models.insurer.sync())
+  .then(() => models.company.sync())
+  .then(() => models.doctorReview.sync())
+  .then(() => models.hospitalDoctor.sync())
+  .then(() => models.patientHistory.sync())
   .catch((err) => {
     throw err;
   });
 
-// sync();
+sync();
 
 module.exports = {
   sync,
