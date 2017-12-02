@@ -16,7 +16,7 @@ const PatientHistory = sequelize.define('patientHistory', {
   indexes: [
     {
       // unique: true,
-      fields: ['patientId', 'doctorId', 'rating'],
+      fields: ['patientId', 'rating'],
     },
   ],
 });

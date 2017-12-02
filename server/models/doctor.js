@@ -1,7 +1,6 @@
 const { Sequelize, sequelize } = require('../database');
 const { DoctorReview } = require('./doctorReview');
 const { HospitalDoctor } = require('./hospitalDoctor');
-const { PatientHistory } = require('./patientHistory');
 const { Prescription } = require('./prescription');
 
 const Doctor = sequelize.define('doctors', {
@@ -29,7 +28,6 @@ const Doctor = sequelize.define('doctors', {
 
 Doctor.hasMany(DoctorReview);
 Doctor.hasMany(HospitalDoctor);
-Doctor.hasMany(PatientHistory);
 Doctor.hasMany(Prescription);
 
 const create = doctor => Doctor.create(doctor);

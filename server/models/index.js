@@ -1,4 +1,5 @@
-const user = require('./user');
+const illness = require('./illness');
+const city = require('./city');
 const patient = require('./patient');
 const hospital = require('./hospital');
 const doctor = require('./doctor');
@@ -13,7 +14,8 @@ const patientHistory = require('./patientHistory');
 
 
 module.exports = {
-  user,
+  illness,
+  city,
   patient,
   hospital,
   doctor,

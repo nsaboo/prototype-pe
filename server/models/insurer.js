@@ -6,13 +6,7 @@ const Insurer = sequelize.define('insurers', {
     primaryKey: true,
     autoIncrement: true,
   },
-  username: {
-    type: Sequelize.STRING,
-  },
-  email: {
-    type: Sequelize.STRING,
-  },
-  mobile: {
+  name: {
     type: Sequelize.STRING,
   },
 });

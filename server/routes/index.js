@@ -1,9 +1,13 @@
 const router = require('express').Router();
 const controller = require('../controllers');
 
-// user routes
-router.get('/user', controller.user.get);
-router.post('/user', controller.user.post);
+// illness routes
+router.get('/illness', controller.illness.get);
+router.post('/illness', controller.illness.post);
+
+// city routes
+router.get('/city', controller.city.get);
+router.post('/city', controller.city.post);
 
 // patient routes
 router.get('/patient', controller.patient.get);

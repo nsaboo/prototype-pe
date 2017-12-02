@@ -8,13 +8,10 @@ const Hospital = sequelize.define('hospitals', {
     primaryKey: true,
     autoIncrement: true,
   },
-  username: {
+  name: {
     type: Sequelize.STRING,
   },
-  email: {
-    type: Sequelize.STRING,
-  },
-  mobile: {
+  contact: {
     type: Sequelize.STRING,
   },
 });

@@ -24,8 +24,15 @@ const Patient = sequelize.define('patients', {
   mobile: {
     type: Sequelize.STRING,
   },
+  relation: {
+    type: Sequelize.INTEGER,
+  },
+  bloodGroup: {
+    type: Sequelize.STRING,
+  },
 });
 
+Patient.hasMany(Patient);
 Patient.hasMany(PatientHistory);
 Patient.hasMany(DoctorReview);
 Patient.hasMany(Prescription);

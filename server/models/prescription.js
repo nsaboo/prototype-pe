@@ -1,4 +1,5 @@
 const { Sequelize, sequelize } = require('../database');
+const { PatientHistory } = require('./patientHistory');
 
 const Prescription = sequelize.define('prescriptions', {
   id: {
@@ -6,16 +7,18 @@ const Prescription = sequelize.define('prescriptions', {
     primaryKey: true,
     autoIncrement: true,
   },
-  username: {
+  imageSrc: {
     type: Sequelize.STRING,
   },
-  email: {
+  doctorNotes: {
     type: Sequelize.STRING,
   },
-  mobile: {
+  patientNotes: {
     type: Sequelize.STRING,
   },
 });
+
+Prescription.hasMany(PatientHistory);
 
 const create = prescription => Prescription.create(prescription);
 

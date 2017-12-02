@@ -6,7 +6,7 @@ const setup = require('../database/setup');
 
 const request = supertest.agent(server);
 
-describe('Server User Spec', () => {
+describe('Server City Spec', () => {
   before((done) => {
     setup.sync()
       .then(() => {
@@ -14,22 +14,20 @@ describe('Server User Spec', () => {
       });
   });
 
-  it('should get all user', (done) => {
+  it('should get all city', (done) => {
     request
-      .get('/user')
+      .get('/city')
       .expect(200, done);
   });
 
-  it('should create user', (done) => {
-    const userParams = {
-      username: 'nandakishore',
-      email: 'nsaboo@pharmeasy.in',
-      mobile: 919980499811,
+  it('should create city', (done) => {
+    const cityParams = {
+      city: 'Mumbai',
     };
 
     request
-      .post('/user')
-      .send(userParams)
+      .post('/city')
+      .send(cityParams)
       .set('Accept', 'application/json')
       .expect(201, done);
   });
