@@ -1,0 +1,188 @@
+version: '3.3'
+services:
+  elasticsearch1:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.instance == pharmeasy-elasticsearch
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+    networks:
+      - pharmeasy-tier
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - cluster.name=pharmeasy-cluster
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+      memlock:
+        soft: -1
+        hard: -1
+#  elasticsearch2:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
+#    deploy:
+#      mode: replicated
+#      replicas: 1
+#      placement:
+#        constraints:
+#          - node.role == worker
+#          - node.labels.instance == pharmeasy-elasticsearch
+#      update_config:
+#        parallelism: 1
+#        delay: 10s
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#    networks:
+#      - pharmeasy-tier
+#    volumes:
+#      - esdata2:/usr/share/elasticsearch/data
+#    environment:
+#      - cluster.name=pharmeasy-cluster
+#      - bootstrap.memory_lock=true
+#      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+#      - "discovery.zen.ping.unicast.hosts=elasticsearch1"
+#    ulimits:
+#      nofile:
+#        soft: 65536
+#        hard: 65536
+#      memlock:
+#        soft: -1
+#        hard: -1
+  kibana:
+    image: docker.elastic.co/kibana/kibana:5.6.3
+    depends_on:
+      - logstash
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.instance == pharmeasy-kibana
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+    networks:
+      - pharmeasy-tier
+    # volumes:
+      # - ./build/kibana/configs/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    environment:
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: changeme
+      ELASTICSEARCH_URL: http://elasticsearch1:9200
+    ports:
+      - 5601:5601
+  logstash:
+    build:
+      context: build/logstash
+      dockerfile: Dockerfile
+    image: nsaboo/logstash:latest
+    depends_on:
+      - elasticsearch1
+    deploy:
+      # mode: replicated
+      mode: global
+      # replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+          # - node.labels.instance == pharmeasy-logstash
+          - node.labels.instance == pharmeasy-common
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+    networks:
+      - pharmeasy-tier
+    volumes:
+      - logstash-data:/usr/share/logstash/data
+      - pharmeasy-applogs:/var/log/
+    ports:
+      - 5000:5000
+    environment:
+      - xpack.monitoring.enabled=false
+      - bootstrap.memory_lock=true
+      - "LS_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+      memlock:
+        soft: -1
+        hard: -1
+  node:
+    build:
+      context: .
+      dockerfile: build/node/Dockerfile
+    image: nsaboo/node:latest
+    deploy:
+      # mode: replicated
+      mode: global
+      # replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+          # - node.labels.instance == pharmeasy-web
+          - node.labels.instance == pharmeasy-common
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+    networks:
+      - pharmeasy-tier
+    volumes:
+      - pharmeasy-applogs:/usr/src/app/logs
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=prod
+      - DB_USERNAME=pharmeasy
+      - DB_PASSWORD=pharmeasy
+      - DB_DATABASE=pharmeasy
+      # - DB_HOST=consumer.c95v7ebbwqka.us-west-1.rds.amazonaws.com
+      - DB_HOST=TBD
+      - DB_DIALECT=mysql
+      - EXPRESS_LOG_FILE=/usr/src/app/logs/access.log
+
+networks:
+  pharmeasy-tier:
+    driver: overlay
+
+volumes:
+  esdata1:
+    driver: local
+  esdata2:
+    driver: local
+  logstash-data:
+    driver: local
+  pharmeasy-applogs:
+    driver: local
