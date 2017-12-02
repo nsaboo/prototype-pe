@@ -109,6 +109,8 @@ services:
       context: .
       dockerfile: build/node/Dockerfile
     image: nsaboo/pharmeasy-node:latest
+    depends_on:
+      - mysql
     deploy:
       # mode: replicated
       mode: global
@@ -137,7 +139,6 @@ services:
       - DB_PASSWORD=pharmeasy
       - DB_DATABASE=pharmeasy
       - DB_HOST=mysql
-      - DB_HOST=TBD
       - DB_DIALECT=mysql
       - EXPRESS_LOG_FILE=/usr/src/app/logs/access.log
   mysql:
