@@ -35,38 +35,6 @@ services:
       memlock:
         soft: -1
         hard: -1
-#  elasticsearch2:
-#    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
-#    deploy:
-#      mode: replicated
-#      replicas: 1
-#      placement:
-#        constraints:
-#          - node.role == worker
-#          - node.labels.instance == pharmeasy-elasticsearch
-#      update_config:
-#        parallelism: 1
-#        delay: 10s
-#      restart_policy:
-#        condition: on-failure
-#        delay: 5s
-#        max_attempts: 3
-#    networks:
-#      - pharmeasy-tier
-#    volumes:
-#      - esdata2:/usr/share/elasticsearch/data
-#    environment:
-#      - cluster.name=pharmeasy-cluster
-#      - bootstrap.memory_lock=true
-#      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
-#      - "discovery.zen.ping.unicast.hosts=elasticsearch1"
-#    ulimits:
-#      nofile:
-#        soft: 65536
-#        hard: 65536
-#      memlock:
-#        soft: -1
-#        hard: -1
   kibana:
     image: docker.elastic.co/kibana/kibana:5.6.3
     depends_on:
@@ -140,7 +108,7 @@ services:
     build:
       context: .
       dockerfile: build/node/Dockerfile
-    image: nsaboo/node:latest
+    image: nsaboo/pharmeasy-node:latest
     deploy:
       # mode: replicated
       mode: global
@@ -168,10 +136,40 @@ services:
       - DB_USERNAME=pharmeasy
       - DB_PASSWORD=pharmeasy
       - DB_DATABASE=pharmeasy
-      # - DB_HOST=consumer.c95v7ebbwqka.us-west-1.rds.amazonaws.com
+      - DB_HOST=mysql
       - DB_HOST=TBD
       - DB_DIALECT=mysql
       - EXPRESS_LOG_FILE=/usr/src/app/logs/access.log
+  mysql:
+    build:
+      context: .
+      dockerfile: build/mysql/Dockerfile
+    image: nsaboo/pharmeasy-mysql:latest
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.instance == pharmeasy-mysql
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+    networks:
+      - pharmeasy-tier
+    volumes:
+      - pharmeasy-mysqldata:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD root
+      - MYSQL_DATABASE pharmeasy
+      - MYSQL_USER pharmeasy
+      - MYSQL_PASSWORD pharmeasy
 
 networks:
   pharmeasy-tier:
@@ -185,4 +183,6 @@ volumes:
   logstash-data:
     driver: local
   pharmeasy-applogs:
+    driver: local
+  pharmeasy-mysqldata:
     driver: local
