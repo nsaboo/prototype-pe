@@ -28,7 +28,6 @@ const sync = () => dropDatabase()
     throw err;
   });
 
-// sync();
 
 module.exports = {
   sync,
