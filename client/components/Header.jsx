@@ -1,5 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, FormGroup, FormControl, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+
 
 class Header extends React.Component {
   constructor(props) {
@@ -51,14 +53,28 @@ class Header extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav onClick={this.handleNav}>
-              <NavItem eventKey={1} href="#">Home</NavItem>
-              <NavItem eventKey={2} href="#">Health & Wellness Products</NavItem>
+              <LinkContainer to="/">
+                <NavItem eventKey={1}>Home</NavItem>
+              </LinkContainer>
+              <LinkContainer to="#">
+                <NavItem eventKey={2}>Health & Wellness Products</NavItem>
+              </LinkContainer>
               <NavDropdown eventKey={3} title="Health & Checkups" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1} href="#" >Hospitals</MenuItem>
-                <MenuItem eventKey={3.2} href="/doctor">Doctors</MenuItem>
-                <MenuItem eventKey={3.3} href="/pharmacy">Pharmacies</MenuItem>
-                <MenuItem eventKey={3.4} href="/laboratory">Diagnostic Labs</MenuItem>
-                <MenuItem eventKey={3.5} href="/insurer">Insurance</MenuItem>
+                <LinkContainer to='/hospital'>
+                  <MenuItem eventKey={3.1}>Hospitals</MenuItem>
+                </LinkContainer>
+                <LinkContainer to="/doctor">
+                  <NavItem eventKey={3.2}>Doctors</NavItem>
+                </LinkContainer>
+                <LinkContainer to='/pharmacy'>
+                  <MenuItem eventKey={3.3}>Pharmacies</MenuItem>
+                </LinkContainer>
+                <LinkContainer to='/laboratory'>
+                  <MenuItem eventKey={3.4}>Diagnostic Labs</MenuItem>
+                </LinkContainer>
+                <LinkContainer to='/insurer'>
+                  <MenuItem eventKey={3.5}>Insurance</MenuItem>
+                </LinkContainer>
               </NavDropdown>
             </Nav>
             <Nav pullRight>
@@ -74,13 +90,31 @@ class Header extends React.Component {
                 <Button type="submit" onClick={this.handleSearch}>Search</Button>
               </Navbar.Form>
               <NavDropdown eventKey={6} title="Profile" id="basic-nav-dropdown">
-                <MenuItem eventKey={6.1}>My Profile</MenuItem>
+                {/* <MenuItem eventKey={6.1}>My Profile</MenuItem>
                 <MenuItem divider />
                 <MenuItem eventKey={6.2}>My Orders</MenuItem>
                 <MenuItem eventKey={6.3}>My Prescriptions</MenuItem>
                 <MenuItem eventKey={6.4}>My History</MenuItem>
                 <MenuItem divider />
-                <MenuItem eventKey={6.5}>My Wallet</MenuItem>
+                <MenuItem eventKey={6.5}>My Wallet</MenuItem> */}
+
+                <LinkContainer to='/profile'>
+                  <MenuItem eventKey={6.1}>My Profile</MenuItem>
+                </LinkContainer>
+                <MenuItem divider />
+                <LinkContainer to='/order'>
+                  <MenuItem eventKey={6.2}>My Orders</MenuItem>
+                </LinkContainer>
+                <LinkContainer to='/prescription'>
+                  <MenuItem eventKey={6.3}>My Prescriptions</MenuItem>
+                </LinkContainer>
+                <LinkContainer to='/history'>
+                  <MenuItem eventKey={6.4}>My History</MenuItem>
+                </LinkContainer>
+                <MenuItem divider />
+                <LinkContainer to='/wallet'>
+                  <MenuItem eventKey={6.5}>My Wallet</MenuItem>
+                </LinkContainer>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
