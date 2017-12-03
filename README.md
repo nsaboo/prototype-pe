@@ -205,7 +205,7 @@ $ npm postinstall
 
 ### Docker Setup (AWS EC2)
 
-#### commands
+#### setup commands
 ```
 # yum upgrade
 sudo yum upgrade
