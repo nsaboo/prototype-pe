@@ -24,7 +24,7 @@ const create = prescription => Prescription.create(prescription);
 
 const findAll = params => Prescription.findAll({ where: params });
 
-const update = (updateParams, whereParams) => Prescription.update(updateParams, { where: whereParams });
+const update = (u, w) => Prescription.update(u, { where: w });
 
 const sync = () => Prescription.sync();
 
