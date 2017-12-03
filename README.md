@@ -35,11 +35,12 @@
       - [Links](#links)
     - [AWS Setup](#aws-setup)
     - [Docker Setup (AWS EC2)](#docker-setup-aws-ec2)
+      - [commands](#commands)
+      - [hub images](#hub-images)
     - [Instance(s) Information](#instances-information)
     - [API Documentation](#api-documentation)
+    - [Reset/SeedData DATABASE (Test environments)](#resetseeddata-database-test-environments)
   - [Other Information](#other-information)
-    - [Reset DATABASE](#reset-database)
-    - [SeedData in test environment](#seeddata-in-test-environment)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -204,6 +205,7 @@ $ npm postinstall
 
 ### Docker Setup (AWS EC2)
 
+#### commands
 ```
 # yum upgrade
 sudo yum upgrade
@@ -231,13 +233,53 @@ source /etc/bash_completion
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash && source ~/.bashrc && nvm install 8.3.0
 ```
 
+#### hub images
+
+- [Docker Hub images](https://hub.docker.com/r/nsaboo/)
 
 ### Instance(s) Information
 
+```
+#
+export DOCKER-STACK-INSTANCE=ec2-***************.ap-south-1.compute.amazonaws.com
+
+# APP Server
+http://DOCKER-STACK-INSTANCE:3000/
+
+# MySQL Server
+DOCKER-STACK-INSTANCE on 3306
+
+# Kibana Server
+http://DOCKER-STACK-INSTANCE:5601/
+
+# Logstash Server
+DOCKER-STACK-INSTANCE
+
+# ElasticSearch Server
+DOCKER-STACK-INSTANCE on 9200
+```
+
 ### API Documentation
+```
+```
+
+### Reset/SeedData DATABASE (Test environments)
+```
+export DB_USERNAME=DB_USERNAME
+export DB_USERNAME=DB_USERNAME
+export DB_DATABASE=DB_DATABASE
+export DB_HOST=ec2-***************.ap-south-1.compute.amazonaws.com
+export DB_DIALECT=mysql
+export NODE_ENV=prod
+
+### NOTE ONLY DO THIS IN YOUR DEV/TEST ENVIRONMENTS ONLYYYYYYYYYY OR TO DO DEMO OF YOUR PROTOTYPE
+node server/database/reset.js
+node server/test/seedData/setup.js
+
+# Verify in MySQL
+mysql -upharmeasy -ppharmeasy -hec2-***************.ap-south-1.compute.amazonaws.com -P3306
+
+# Verify through api end points as given above
+```
 
 ## Other Information
-
-### Reset DATABASE
-
-### SeedData in test environment
