@@ -7,7 +7,7 @@ import Hospital from './Hospital';
 import Doctor from './Doctor';
 import Pharmacy from './Pharmacy';
 import Laboratory from './Laboratory';
-import Insurance from './insurance';
+import Insurance from './Insurance';
 import Profile from './Profile';
 import Order from './Order';
 import Prescription from './Prescription';
