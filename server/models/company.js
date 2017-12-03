@@ -13,7 +13,7 @@ const Company = sequelize.define('companies', {
 
 const create = company => Company.create(company);
 
-const findAll = () => Company.findAll();
+const findAll = params => Company.findAll({ where: params });
 
 const sync = () => Company.sync();
 

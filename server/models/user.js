@@ -1,33 +1,34 @@
 const { Sequelize, sequelize } = require('../database');
 const { Prescription } = require('./prescription');
 
-const Pharmacy = sequelize.define('pharmacies', {
+
+const User = sequelize.define('users', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  name: {
+  username: {
     type: Sequelize.STRING,
   },
-  email: {
+  password: {
     type: Sequelize.STRING,
   },
-  mobile: {
+  usertype: {
     type: Sequelize.STRING,
   },
 });
 
-Pharmacy.hasMany(Prescription);
+User.hasMany(Prescription);
 
-const create = pharmacy => Pharmacy.create(pharmacy);
+const create = user => User.create(user);
 
-const findAll = params => Pharmacy.findAll({ where: params });
+const findAll = params => User.findAll({ where: params });
 
-const sync = () => Pharmacy.sync();
+const sync = () => User.sync();
 
 module.exports = {
-  Pharmacy,
+  User,
   create,
   findAll,
   sync,

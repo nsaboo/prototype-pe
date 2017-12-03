@@ -23,7 +23,7 @@ const PatientHistory = sequelize.define('patientHistory', {
 
 const sync = () => PatientHistory.sync();
 
-const findAll = () => PatientHistory.findAll();
+const findAll = params => PatientHistory.findAll({ where: params });
 
 const create = patientParams => PatientHistory.create(patientParams);
 

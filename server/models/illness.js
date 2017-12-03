@@ -17,7 +17,7 @@ Illness.hasMany(Prescription);
 
 const create = illness => Illness.create(illness);
 
-const findAll = () => Illness.findAll();
+const findAll = params => Illness.findAll({ where: params });
 
 const sync = () => Illness.sync();
 

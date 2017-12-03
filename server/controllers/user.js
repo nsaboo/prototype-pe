@@ -4,7 +4,7 @@ module.exports = {
   get: (req, res) => {
     const reqParams = req.query;
 
-    models.patientHistory.findAll(reqParams)
+    models.user.findAll(reqParams)
       .then((data) => {
         res.status(200).send(data);
       })
@@ -13,9 +13,9 @@ module.exports = {
       });
   },
   post: (req, res) => {
-    const patientHistory = req.body;
+    const userParam = req.body;
 
-    models.patientHistory.create(patientHistory)
+    models.user.create(userParam)
       .then((data) => {
         res.status(201).send(data);
       })

@@ -1,0 +1,77 @@
+[
+  {
+    "username": "doctor_1",
+    "password": "doctor_1",
+    "usertype": "Doctor"
+  },
+  {
+    "username": "doctor_2",
+    "password": "doctor_2",
+    "usertype": "Doctor"
+  },
+  {
+    "username": "doctor_3",
+    "password": "doctor_3",
+    "usertype": "Doctor"
+  },
+  {
+    "username": "doctor_4",
+    "password": "doctor_4",
+    "usertype": "Doctor"
+  },
+  {
+    "username": "doctor_5",
+    "password": "doctor_5",
+    "usertype": "Doctor"
+  },
+  {
+    "username": "patient_1",
+    "password": "patient_1",
+    "usertype": "Patient"
+  },
+  {
+    "username": "patient_2",
+    "password": "patient_2",
+    "usertype": "Patient"
+  },
+  {
+    "username": "patient_3",
+    "password": "patient_3",
+    "usertype": "Patient"
+  },
+  {
+    "username": "patient_4",
+    "password": "patient_4",
+    "usertype": "Patient"
+  },
+  {
+    "username": "patient_5",
+    "password": "patient_5",
+    "usertype": "Patient"
+  },
+  {
+    "username": "pharmacist_1",
+    "password": "pharmacist_1",
+    "usertype": "Pharmacist"
+  },
+  {
+    "username": "pharmacist_2",
+    "password": "pharmacist_2",
+    "usertype": "Pharmacist"
+  },
+  {
+    "username": "pharmacist_3",
+    "password": "pharmacist_3",
+    "usertype": "Pharmacist"
+  },
+  {
+    "username": "pharmacist_4",
+    "password": "pharmacist_4",
+    "usertype": "Pharmacist"
+  },
+  {
+    "username": "pharmacist_5",
+    "password": "pharmacist_5",
+    "usertype": "Pharmacist"
+  }
+]

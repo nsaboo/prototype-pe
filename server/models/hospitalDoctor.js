@@ -23,7 +23,7 @@ const HospitalDoctor = sequelize.define('hospitalDoctors', {
 
 const sync = () => HospitalDoctor.sync();
 
-const findAll = () => HospitalDoctor.findAll();
+const findAll = params => HospitalDoctor.findAll({ where: params });
 
 const create = hospitalDoctor => HospitalDoctor.create(hospitalDoctor);
 

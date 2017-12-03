@@ -39,7 +39,7 @@ Patient.hasMany(Prescription);
 
 const create = patient => Patient.create(patient);
 
-const findAll = () => Patient.findAll();
+const findAll = params => Patient.findAll({ where: params });
 
 const sync = () => Patient.sync();
 

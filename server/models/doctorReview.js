@@ -23,7 +23,7 @@ const DoctorReview = sequelize.define('doctorReviews', {
 
 const sync = () => DoctorReview.sync();
 
-const findAll = () => DoctorReview.findAll();
+const findAll = params => DoctorReview.findAll({ where: params });
 
 const create = doctorReview => DoctorReview.create(doctorReview);
 

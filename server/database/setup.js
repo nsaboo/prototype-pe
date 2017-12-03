@@ -12,6 +12,7 @@ const dropDatabase = () => sequelize.query(`DROP DATABASE IF EXISTS ${ENV_CONFIG
 
 const sync = () => dropDatabase()
   .then(() => createDatabase())
+  .then(() => models.user.sync())
   .then(() => models.illness.sync())
   .then(() => models.city.sync())
   .then(() => models.patient.sync())

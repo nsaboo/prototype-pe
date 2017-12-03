@@ -20,7 +20,7 @@ Hospital.hasMany(HospitalDoctor);
 
 const create = hospital => Hospital.create(hospital);
 
-const findAll = () => Hospital.findAll();
+const findAll = params => Hospital.findAll({ where: params });
 
 const sync = () => Hospital.sync();
 

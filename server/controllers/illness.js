@@ -2,7 +2,9 @@ const models = require('../models');
 
 module.exports = {
   get: (req, res) => {
-    models.illness.findAll()
+    const reqParams = req.query;
+
+    models.illness.findAll(reqParams)
       .then((data) => {
         res.status(200).send(data);
       })

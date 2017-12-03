@@ -90,14 +90,6 @@ class Header extends React.Component {
                 <Button type="submit" onClick={this.handleSearch}>Search</Button>
               </Navbar.Form>
               <NavDropdown eventKey={6} title="Profile" id="basic-nav-dropdown">
-                {/* <MenuItem eventKey={6.1}>My Profile</MenuItem>
-                <MenuItem divider />
-                <MenuItem eventKey={6.2}>My Orders</MenuItem>
-                <MenuItem eventKey={6.3}>My Prescriptions</MenuItem>
-                <MenuItem eventKey={6.4}>My History</MenuItem>
-                <MenuItem divider />
-                <MenuItem eventKey={6.5}>My Wallet</MenuItem> */}
-
                 <LinkContainer to='/profile'>
                   <MenuItem eventKey={6.1}>My Profile</MenuItem>
                 </LinkContainer>

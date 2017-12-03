@@ -25,7 +25,7 @@ City.hasMany(Pharmacy);
 
 const create = city => City.create(city);
 
-const findAll = () => City.findAll();
+const findAll = params => City.findAll({ where: params });
 
 const sync = () => City.sync();
 

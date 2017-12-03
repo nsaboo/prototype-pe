@@ -2,7 +2,9 @@ const models = require('../models');
 
 module.exports = {
   get: (req, res) => {
-    models.doctorReview.findAll()
+    const reqParams = req.query;
+
+    models.doctorReview.findAll(reqParams)
       .then((data) => {
         res.status(200).send(data);
       })

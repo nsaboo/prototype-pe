@@ -22,7 +22,7 @@ Laboratory.hasMany(Prescription);
 
 const create = laboratory => Laboratory.create(laboratory);
 
-const findAll = () => Laboratory.findAll();
+const findAll = params => Laboratory.findAll({ where: params });
 
 const sync = () => Laboratory.sync();
 

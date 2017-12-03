@@ -13,7 +13,7 @@ const Insurer = sequelize.define('insurers', {
 
 const create = insurer => Insurer.create(insurer);
 
-const findAll = () => Insurer.findAll();
+const findAll = params => Insurer.findAll({ where: params });
 
 const sync = () => Insurer.sync();
 

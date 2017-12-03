@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const controller = require('../controllers');
 
+// user routes
+router.get('/user', controller.user.get);
+router.post('/user', controller.user.post);
+
 // illness routes
 router.get('/illness', controller.illness.get);
 router.post('/illness', controller.illness.post);
