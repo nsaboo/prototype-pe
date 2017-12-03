@@ -15,11 +15,14 @@ const create = company => Company.create(company);
 
 const findAll = params => Company.findAll({ where: params });
 
+const update = (u, w) => Company.update(u, { where: w });
+
 const sync = () => Company.sync();
 
 module.exports = {
   Company,
   create,
   findAll,
+  update,
   sync,
 };

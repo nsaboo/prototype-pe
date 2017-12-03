@@ -40,8 +40,8 @@ class Hospital extends React.Component {
         search
         options={options}
       >
-        <TableHeaderColumn dataField="id" width="5%">Doctor ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="createdAt" isKey width="10%">createdAt</TableHeaderColumn>
+        <TableHeaderColumn dataField="id" isKey width="5%">Doctor ID</TableHeaderColumn>
+        <TableHeaderColumn dataField="createdAt" width="10%">createdAt</TableHeaderColumn>
         <TableHeaderColumn dataField="name" width="5%">Name</TableHeaderColumn>
         <TableHeaderColumn dataField="email" width="5%">Email</TableHeaderColumn>
         <TableHeaderColumn dataField="contact" width="10%">Contact</TableHeaderColumn>

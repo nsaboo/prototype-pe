@@ -12,6 +12,18 @@ module.exports = {
         res.status(404).send(err);
       });
   },
+  put: (req, res) => {
+    const updateParams = req.body;
+    const whereParams = req.query;
+
+    models.company.update(updateParams, whereParams)
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch((err) => {
+        res.status(404).send(err);
+      });
+  },
   post: (req, res) => {
     const company = req.body;
 

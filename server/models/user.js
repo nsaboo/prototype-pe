@@ -25,11 +25,14 @@ const create = user => User.create(user);
 
 const findAll = params => User.findAll({ where: params });
 
+const update = (u, w) => User.update(u, { where: w });
+
 const sync = () => User.sync();
 
 module.exports = {
   User,
   create,
   findAll,
+  update,
   sync,
 };

@@ -24,11 +24,14 @@ const create = laboratory => Laboratory.create(laboratory);
 
 const findAll = params => Laboratory.findAll({ where: params });
 
+const update = (u, w) => Laboratory.update(u, { where: w });
+
 const sync = () => Laboratory.sync();
 
 module.exports = {
   Laboratory,
   create,
   findAll,
+  update,
   sync,
 };

@@ -25,11 +25,14 @@ const sync = () => HospitalDoctor.sync();
 
 const findAll = params => HospitalDoctor.findAll({ where: params });
 
+const update = (u, w) => HospitalDoctor.update(u, { where: w });
+
 const create = hospitalDoctor => HospitalDoctor.create(hospitalDoctor);
 
 module.exports = {
   HospitalDoctor,
   sync,
   create,
+  update,
   findAll,
 };

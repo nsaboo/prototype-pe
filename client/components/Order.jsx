@@ -90,8 +90,8 @@ class Order extends React.Component {
 
     return (
       <BootstrapTable bsSize="sm" data={this.state.orderList} striped pagination search options={options}>
-        <TableHeaderColumn dataField="id" width="5%">Prescription ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="createdAt" isKey width="10%">Prescription ID</TableHeaderColumn>
+        <TableHeaderColumn dataField="id" isKey width="5%">Prescription ID</TableHeaderColumn>
+        <TableHeaderColumn dataField="createdAt" width="10%">Prescription ID</TableHeaderColumn>
         <TableHeaderColumn dataField="patientId" width="5%">Patient ID</TableHeaderColumn>
         <TableHeaderColumn dataField="illnessId" width="5%">illnessId</TableHeaderColumn>
         <TableHeaderColumn dataField="doctorNotes" width="10%">doctorNotes</TableHeaderColumn>

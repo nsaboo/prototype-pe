@@ -19,11 +19,14 @@ const create = illness => Illness.create(illness);
 
 const findAll = params => Illness.findAll({ where: params });
 
+const update = (u, w) => Illness.update(u, { where: w });
+
 const sync = () => Illness.sync();
 
 module.exports = {
   Illness,
   create,
   findAll,
+  update,
   sync,
 };

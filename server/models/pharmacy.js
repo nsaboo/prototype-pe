@@ -24,11 +24,14 @@ const create = pharmacy => Pharmacy.create(pharmacy);
 
 const findAll = params => Pharmacy.findAll({ where: params });
 
+const update = (u, w) => Pharmacy.update(u, { where: w });
+
 const sync = () => Pharmacy.sync();
 
 module.exports = {
   Pharmacy,
   create,
   findAll,
+  update,
   sync,
 };
