@@ -104,6 +104,15 @@ module.exports = {
 };
 ```
 
+### Tmux Configuration
+
+```
+brew install Tmux
+
+# From the root of the prototype-pe project directory, run the following
+bash tools/tmux.sh
+```
+
 ## Development
 
 ### npm Scripts
@@ -177,19 +186,17 @@ $ npm postinstall
 ### Docker Setup
 
 ### System Architecture
+![System Architecture](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/prototype-pe.png)
 
 ### Schema Design
 ![Schema Design](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/SchemaDesign.png)
 
 ### Instance(s) Information
 
+### API Documentation
+
 ## Other Information
 
-### Tmux Configuration
+### Reset DATABASE
 
-```
-brew install Tmux
-
-# From the root of the prototype-pe project directory, run the following
-bash tools/tmux.sh
-```
+### SeedData in test environment
