@@ -165,10 +165,10 @@ $ npm postinstall
 
 - login to aws console
 - launch EC2 instances (as per suggested region, selected Mumbai)
-- create key for the new region if doesn't exist
-- download and chmod 400 <user-key>.pem
-- cp <user-key>.pem to ~/.ssh/
-- ssh-add ~/.ssh/<user-key>.pem
+- create key for the new region if doesn't exist (lets say as USERKEY.pem)
+- download and chmod 400 USERKEY.pem
+- cp USERKEY.pem to ~/.ssh/
+- ssh-add ~/.ssh/USERKEY.pem
 - launch as many T2 micro instances as per your Architecture
 - install Docker (read the below Docker section)
 - create Security Groups as needed per your Architecture and apply to each of the T2 EC2 instances
@@ -178,6 +178,18 @@ $ npm postinstall
 
 ### System Architecture
 
+### Schema Design
+![Schema Design](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/SchemaDesign.png)
+
 ### Instance(s) Information
 
 ## Other Information
+
+### Tmux Configuration
+
+```
+brew install Tmux
+
+# From the root of the prototype-pe project directory, run the following
+bash tools/tmux.sh
+```
