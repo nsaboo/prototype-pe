@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   context: path.join(__dirname, 'client'),
@@ -24,4 +25,7 @@ module.exports = {
     ],
     extensions: ['.js', '.jsx'],
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+  ],
 };
