@@ -12,7 +12,7 @@ const City = sequelize.define('cities', {
     primaryKey: true,
     autoIncrement: true,
   },
-  city: {
+  name: {
     type: Sequelize.STRING,
   },
 });

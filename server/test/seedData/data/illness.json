@@ -1,8 +1,20 @@
 [
-  "Fever",
-  "Malaria",
-  "Typhoid",
-  "Thyroid",
-  "Cold",
-  "Others"
+  {
+    "category": "Fever"
+  },
+  {
+    "category": "Malaria"
+  },
+  {
+    "category": "Typhoid"
+  },
+  {
+    "category": "Thyroid"
+  },
+  {
+    "category": "Cold"
+  },
+  {
+    "category": "Others"
+  }
 ]

@@ -1,6 +1,6 @@
 const rp = require('request-promise');
-const helpers = require('../helpers/');
-const illnessData = require('./data/illness.json');
+const helpers = require('../../helpers/');
+const illnessData = require('../data/illness.json');
 
 
 const createIllness = (illness) => {
@@ -10,7 +10,7 @@ const createIllness = (illness) => {
     headers: {
       'content-type': 'application/json',
     },
-    body: { category: illness },
+    body: illness,
     json: true,
   };
 
@@ -28,8 +28,6 @@ const seedIllness = () => {
     createIllness(illness);
   });
 };
-
-seedIllness();
 
 module.exports = {
   seedIllness,

@@ -1,8 +1,32 @@
 [
-  "Mumbai",
-  "New Delhi",
-  "Kolkatta",
-  "Chennai",
-  "Bangalore",
-  "Hyderabad"
+  {
+    "name": "Mumbai"
+  },
+  {
+    "name": "Delhi"
+  },
+  {
+    "name": "Kolkata"
+  },
+  {
+    "name": "Chennai"
+  },
+  {
+    "name": "Bengaluru"
+  },
+  {
+    "name": "Hyderabad"
+  },
+  {
+    "name": "Pune"
+  },
+  {
+    "name": "Ahmedabad"
+  },
+  {
+    "name": "Jaipur"
+  },
+  {
+    "name": "Bhopal"
+  }
 ]

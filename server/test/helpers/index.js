@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const words = require('./words.json');
 
 
-const CONSUMER_URL = process.env.CONSUMER_URL || 'http://localhost:3000';
+const CONSUMER_URL = process.env.CONSUMER_URL || 'http://localhost:3000/api';
 const wordsLength = words.length;
 
 

@@ -1,6 +1,6 @@
 const rp = require('request-promise');
-const helpers = require('../helpers/');
-const users = require('./data/users.json');
+const helpers = require('../../helpers/');
+const users = require('../data/users.json');
 
 
 const createUser = (user) => {
@@ -28,8 +28,6 @@ const seedUser = () => {
     createUser(user);
   });
 };
-
-seedUser();
 
 module.exports = {
   seedUser,
