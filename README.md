@@ -13,8 +13,6 @@
       - [install mysql](#install-mysql)
       - [start mysql](#start-mysql)
       - [create database](#create-database)
-    - [Python Setup](#python-setup)
-      - [install python](#install-python)
     - [Airbnb Style Guide Setup](#airbnb-style-guide-setup)
       - [global](#global)
       - [local](#local)
@@ -22,19 +20,27 @@
   - [Development](#development)
     - [npm Scripts](#npm-scripts)
       - [install](#install)
-      - [start](#start)
-      - [dev-start (with nodemon)](#dev-start-with-nodemon)
-      - [lint test (with eslint)](#lint-test-with-eslint)
-      - [unit test (with mocha)](#unit-test-with-mocha)
-      - [test](#test)
-      - [coverage (istanbul with mocha)](#coverage-istanbul-with-mocha)
+      - [start (node)](#start-node)
+      - [dev-start (nodemon)](#dev-start-nodemon)
+      - [dev-react (webpack -d --watch)](#dev-react-webpack--d---watch)
+      - [lint test (eslint)](#lint-test-eslint)
+      - [unit test (mocha)](#unit-test-mocha)
+      - [coverage (istanbul + mocha)](#coverage-istanbul--mocha)
+      - [test (lint + unit + coverage)](#test-lint--unit--coverage)
+      - [postinstall (webpack -p)](#postinstall-webpack--p)
+    - [Travis-CI Integration](#travis-ci-integration)
+      - [Links](#links)
+    - [AWS Setup](#aws-setup)
+    - [Docker Setup](#docker-setup)
+    - [System Architecture](#system-architecture)
+    - [Instance(s) Information](#instances-information)
   - [Other Information](#other-information)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Project Name
 
-prototyp-pe (prototype PharmEasy)
+prototype-pe (prototype PharmEasy)
 
 ## Roadmap
 
@@ -107,39 +113,71 @@ module.exports = {
 $ npm install
 ```
 
-#### start
+#### start (node)
 ```
 $ npm start
 ```
 
-#### dev-start (with nodemon)
+#### dev-start (nodemon)
 ```
 $ npm dev-start
 ```
 
-#### dev-react (with webpack -d --watch)
+#### dev-react (webpack -d --watch)
 ```
 $ npm dev-react
 ```
 
-#### lint test (with eslint)
+#### lint test (eslint)
 ```
 $ npm lint
 ```
 
-#### unit test (with mocha)
+#### unit test (mocha)
 ```
 $ npm unit
 ```
 
-#### coverage (istanbul with mocha)
+#### coverage (istanbul + mocha)
 ```
 $ npm coverage
 ```
 
-#### test
+#### test (lint + unit + coverage)
 ```
 $ npm test
 ```
+
+#### postinstall (webpack -p)
+```
+$ npm postinstall
+```
+
+### Travis-CI Integration
+
+#### Links
+
+- [prototype-pe](https://travis-ci.org/nsaboo/prototype-pe)
+- [builds](https://travis-ci.org/nsaboo/prototype-pe/builds)
+- [branches](https://travis-ci.org/nsaboo/prototype-pe/branches)
+
+### AWS Setup
+
+- login to aws console
+- launch EC2 instances (as per suggested region, selected Mumbai)
+- create key for the new region if doesn't exist
+- download and chmod 400 <user-key>.pem
+- cp <user-key>.pem to ~/.ssh/
+- ssh-add ~/.ssh/<user-key>.pem
+- launch as many T2 micro instances as per your Architecture
+- install Docker (read the below Docker section)
+- create Security Groups as needed per your Architecture and apply to each of the T2 EC2 instances
+- create Docker Swarm/Stack and deploy your application through Docker Hub
+
+### Docker Setup
+
+### System Architecture
+
+### Instance(s) Information
 
 ## Other Information
