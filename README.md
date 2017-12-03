@@ -35,10 +35,10 @@
       - [Links](#links)
     - [AWS Setup](#aws-setup)
     - [Docker Setup (AWS EC2)](#docker-setup-aws-ec2)
-      - [commands](#commands)
+      - [setup commands](#setup-commands)
       - [hub images](#hub-images)
     - [Instance(s) Information](#instances-information)
-    - [API Documentation](#api-documentation)
+    - [API Documentation (get, put, post)](#api-documentation-get-put-post)
     - [Reset/SeedData DATABASE (Test environments)](#resetseeddata-database-test-environments)
   - [Other Information](#other-information)
 
@@ -259,8 +259,66 @@ DOCKER-STACK-INSTANCE
 DOCKER-STACK-INSTANCE on 9200
 ```
 
-### API Documentation
+### API Documentation (get, put, post)
 ```
+http://localhost:3000/api/user
+http://localhost:3000/api/illness
+http://localhost:3000/api/city
+http://localhost:3000/api/patient
+http://localhost:3000/api/hospital
+http://localhost:3000/api/doctor
+http://localhost:3000/api/laboratory
+http://localhost:3000/api/prescription
+http://localhost:3000/api/pharmacy
+http://localhost:3000/api/insurer
+http://localhost:3000/api/company
+
+# Example POST - GET - PUT - GET
+
+## POST
+$ curl -H "Content-Type: application/json" -d '{"name": "doctor_1234"}' -X POST http://localhost:3000/api/doctor | jsonlint
+{
+  "id": 23,
+  "name": "doctor_1234",
+  "updatedAt": "2017-12-03T19:31:03.583Z",
+  "createdAt": "2017-12-03T19:31:03.583Z"
+}
+
+## GET
+$ curl http://localhost:3000/api/doctor?id=23 | jsonlint
+[
+  {
+    "id": 23,
+    "name": "doctor_1234",
+    "age": null,
+    "gender": null,
+    "email": null,
+    "mobile": null,
+    "createdAt": "2017-12-03T19:31:03.000Z",
+    "updatedAt": "2017-12-03T19:31:03.000Z",
+    "cityId": null
+  }
+]
+
+## PUT
+$ curl -H "Content-Type: application/json" -d '{"age": "99"}' -X PUT http://localhost:3000/api/doctor?id=23
+[1]
+
+## GET
+$ curl "http://localhost:3000/api/doctor?id=23&age=99" | jsonlint
+[
+  {
+    "id": 23,
+    "name": "doctor_1234",
+    "age": 99,
+    "gender": null,
+    "email": null,
+    "mobile": null,
+    "createdAt": "2017-12-03T19:31:03.000Z",
+    "updatedAt": "2017-12-03T19:33:14.000Z",
+    "cityId": null
+  }
+]
 ```
 
 ### Reset/SeedData DATABASE (Test environments)
