@@ -17,6 +17,9 @@
       - [global](#global)
       - [local](#local)
       - [configure .eslintrc (global/local)](#configure-eslintrc-globallocal)
+    - [Tmux Configuration](#tmux-configuration)
+  - [System Architecture](#system-architecture)
+  - [Schema Design](#schema-design)
   - [Development](#development)
     - [npm Scripts](#npm-scripts)
       - [install](#install)
@@ -31,10 +34,12 @@
     - [Travis-CI Integration](#travis-ci-integration)
       - [Links](#links)
     - [AWS Setup](#aws-setup)
-    - [Docker Setup](#docker-setup)
-    - [System Architecture](#system-architecture)
+    - [Docker Setup (AWS EC2)](#docker-setup-aws-ec2)
     - [Instance(s) Information](#instances-information)
+    - [API Documentation](#api-documentation)
   - [Other Information](#other-information)
+    - [Reset DATABASE](#reset-database)
+    - [SeedData in test environment](#seeddata-in-test-environment)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -53,6 +58,14 @@ prototype-pe (prototype PharmEasy)
 - [Node 8.3.0](https://www.npmjs.com/package/node)
 - [MySQL 5.7.20](https://www.mysql.com/)
 - [MySQL Workbench 6.3](https://www.mysql.com/products/workbench/)
+- [express](https://www.npmjs.com/package/express)
+- [react](https://www.npmjs.com/package/react)
+- [react-bootstrap](https://www.npmjs.com/package/react-bootstrap)
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [react-router-bootstrap](https://www.npmjs.com/package/react-router-bootstrap)
+- [react-bootstrap-table](https://www.npmjs.com/package/react-bootstrap-table)
+- [mysql2](https://www.npmjs.com/package/mysql2)
+- [sequelize](https://www.npmjs.com/package/sequelize)
 
 ## Setup (Mac)
 
@@ -112,6 +125,12 @@ brew install Tmux
 # From the root of the prototype-pe project directory, run the following
 bash tools/tmux.sh
 ```
+
+## System Architecture
+![System Architecture](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/prototype-pe.png)
+
+## Schema Design
+![Schema Design](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/SchemaDesign.png)
 
 ## Development
 
@@ -183,13 +202,35 @@ $ npm postinstall
 - create Security Groups as needed per your Architecture and apply to each of the T2 EC2 instances
 - create Docker Swarm/Stack and deploy your application through Docker Hub
 
-### Docker Setup
+### Docker Setup (AWS EC2)
 
-### System Architecture
-![System Architecture](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/prototype-pe.png)
+```
+# yum upgrade
+sudo yum upgrade
 
-### Schema Design
-![Schema Design](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/SchemaDesign.png)
+# docker git telnet
+sudo yum install -y git docker telnet
+
+# docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+# docker service
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+# logout and login again to have the docker commands run as sudo (with ec2-user)
+
+# bash-completion
+sudo yum install -y bash-completion --enablerepo=epel
+sudo curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker -o /etc/bash_completion.d/docker
+sudo curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+
+source /etc/bash_completion
+
+# nvm installation
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash && source ~/.bashrc && nvm install 8.3.0
+```
+
 
 ### Instance(s) Information
 
