@@ -32,6 +32,6 @@ module.exports = {
   Prescription,
   create,
   findAll,
-  sync,
   update,
+  sync,
 };

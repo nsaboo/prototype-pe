@@ -25,11 +25,14 @@ const sync = () => DoctorReview.sync();
 
 const findAll = params => DoctorReview.findAll({ where: params });
 
+const update = (u, w) => DoctorReview.update(u, { where: w });
+
 const create = doctorReview => DoctorReview.create(doctorReview);
 
 module.exports = {
   DoctorReview,
   sync,
   create,
+  update,
   findAll,
 };

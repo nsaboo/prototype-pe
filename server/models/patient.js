@@ -41,11 +41,14 @@ const create = patient => Patient.create(patient);
 
 const findAll = params => Patient.findAll({ where: params });
 
+const update = (u, w) => Patient.update(u, { where: w });
+
 const sync = () => Patient.sync();
 
 module.exports = {
   Patient,
   create,
   findAll,
+  update,
   sync,
 };

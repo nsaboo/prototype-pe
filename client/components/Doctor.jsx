@@ -1,45 +1,6 @@
 import React from 'react';
-import $ from 'jquery';
-import { Table } from 'react-bootstrap';
-
-const DoctorTableHead = () => {
-  return <thead>
-    <tr>
-      <th> Name </th>
-      <th> Age </th>
-      <th> Gender </th>
-      <th> Email </th>
-      <th> Mobile </th>
-      <th> cityId </th>
-    </tr>
-  </thead>
-};
-
-const DoctorTableRow = (props) => (
-  <tr>
-    <td> {props.item.name} </td>
-    <td> {props.item.age} </td>
-    <td> {props.item.gender} </td>
-    <td> {props.item.email} </td>
-    <td> {props.item.mobile} </td>
-    <td> {props.item.cityId} </td>
-  </tr>
-);
-
-const DoctorTableBody = (props) => {
-  const doctorBody = props.list.map((item) => {
-    return (
-      <DoctorTableRow key={item.id} item={item} />
-    )
-  });
-
-  return(
-    <tbody>
-      { doctorBody }
-    </tbody>
-  );
-};
-
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import helpers from '../helpers/index';
 
 class Doctor extends React.Component {
   constructor(props) {
@@ -51,26 +12,43 @@ class Doctor extends React.Component {
   }
 
   componentDidMount() {
-    $.ajax({
-      url: '/api/doctor',
-      type: 'GET',
-      success: (res) => {
+    const uri = '/api/doctor';
+
+    helpers.getApiData(uri)
+      .then((data) => {
         this.setState({
-          doctorList: res
+          doctorList: data,
         });
-      },
-      error: () => {
-        console.log('error fetching users from database');
-      }
-    });
+      })
+      .catch((err) => {
+        console.log('error fetching users from database', err);
+      });
   }
 
   render() {
-    return(
-      <Table responsive>
-        <DoctorTableHead />
-        <DoctorTableBody list={this.state.doctorList} />
-      </Table>
+    const options = {
+      defaultSortName: 'createdAt',
+      defaultSortOrder: 'asc',
+    };
+
+    return (
+      <BootstrapTable
+        bsSize="sm"
+        data={this.state.doctorList}
+        striped
+        pagination
+        search
+        options={options}
+      >
+        <TableHeaderColumn dataField="id" isKey width="5%">Doctor ID</TableHeaderColumn>
+        <TableHeaderColumn dataField="createdAt" width="10%">createdAt</TableHeaderColumn>
+        <TableHeaderColumn dataField="name" width="5%">Name</TableHeaderColumn>
+        <TableHeaderColumn dataField="age" width="5%">Age</TableHeaderColumn>
+        <TableHeaderColumn dataField="gender" width="5%">Gender</TableHeaderColumn>
+        <TableHeaderColumn dataField="email" width="5%">Email</TableHeaderColumn>
+        <TableHeaderColumn dataField="mobile" width="10%">Mobile</TableHeaderColumn>
+        <TableHeaderColumn dataField="cityId" width="10%">cityId</TableHeaderColumn>
+      </BootstrapTable>
     );
   }
 }

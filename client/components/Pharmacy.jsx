@@ -1,41 +1,6 @@
 import React from 'react';
-import $ from 'jquery';
-import { Table } from 'react-bootstrap';
-
-const PharmacyTableHead = () => {
-  return <thead>
-    <tr>
-      <th> Name </th>
-      <th> Email </th>
-      <th> Mobile </th>
-      <th> cityId </th>
-    </tr>
-  </thead>
-};
-
-const PharmacyTableRow = (props) => (
-  <tr>
-    <td> {props.item.name} </td>
-    <td> {props.item.email} </td>
-    <td> {props.item.mobile} </td>
-    <td> {props.item.cityId} </td>
-  </tr>
-);
-
-const PharmacyTableBody = (props) => {
-  const pharmacyBody = props.list.map((item) => {
-    return (
-      <PharmacyTableRow key={item.id} item={item} />
-    )
-  });
-
-  return(
-    <tbody>
-      { pharmacyBody }
-    </tbody>
-  );
-};
-
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import helpers from '../helpers/index';
 
 class Pharmacy extends React.Component {
   constructor(props) {
@@ -47,26 +12,41 @@ class Pharmacy extends React.Component {
   }
 
   componentDidMount() {
-    $.ajax({
-      url: '/api/pharmacy',
-      type: 'GET',
-      success: (res) => {
+    const uri = '/api/pharmacy';
+
+    helpers.getApiData(uri)
+      .then((data) => {
         this.setState({
-          pharmacyList: res
+          pharmacyList: data,
         });
-      },
-      error: () => {
-        console.log('error fetching users from database');
-      }
-    });
+      })
+      .catch((err) => {
+        console.log('error fetching users from database', err);
+      });
   }
 
   render() {
-    return(
-      <Table responsive>
-        <PharmacyTableHead />
-        <PharmacyTableBody list={this.state.pharmacyList} />
-      </Table>
+    const options = {
+      defaultSortName: 'createdAt',
+      defaultSortOrder: 'asc',
+    };
+
+    return (
+      <BootstrapTable
+        bsSize="sm"
+        data={this.state.pharmacyList}
+        striped
+        pagination
+        search
+        options={options}
+      >
+        <TableHeaderColumn dataField="id" isKey width="5%">Pharmacy ID</TableHeaderColumn>
+        <TableHeaderColumn dataField="createdAt" width="10%">createdAt</TableHeaderColumn>
+        <TableHeaderColumn dataField="name" width="5%">Name</TableHeaderColumn>
+        <TableHeaderColumn dataField="email" width="5%">Email</TableHeaderColumn>
+        <TableHeaderColumn dataField="mobile" width="10%">Mobile</TableHeaderColumn>
+        <TableHeaderColumn dataField="cityId" width="10%">cityId</TableHeaderColumn>
+      </BootstrapTable>
     );
   }
 }

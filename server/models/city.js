@@ -27,11 +27,14 @@ const create = city => City.create(city);
 
 const findAll = params => City.findAll({ where: params });
 
+const update = (u, w) => City.update(u, { where: w });
+
 const sync = () => City.sync();
 
 module.exports = {
   City,
   create,
   findAll,
+  update,
   sync,
 };

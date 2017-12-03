@@ -1,7 +1,7 @@
 import React from 'react';
-import $ from 'jquery';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import helpers from '../helpers/index';
 
 
 class Order extends React.Component {
@@ -19,18 +19,17 @@ class Order extends React.Component {
   }
 
   componentDidMount() {
-    $.ajax({
-      url: '/api/prescription',
-      type: 'GET',
-      success: (res) => {
+    const uri = '/api/prescription';
+
+    helpers.getApiData(uri)
+      .then((data) => {
         this.setState({
-          orderList: res,
+          orderList: data,
         });
-      },
-      error: () => {
-        console.log('error fetching users from database');
-      },
-    });
+      })
+      .catch((err) => {
+        console.log('error fetching users from database', err);
+      });
   }
 
   onChangeHandler(e) {
@@ -45,23 +44,21 @@ class Order extends React.Component {
     e.preventDefault();
     const id = e.target.value;
 
-    // update prescription api with id and pharmeasyId
-    $.ajax({
-      url: `/api/prescription?id=${id}`,
-      type: 'PUT',
-      data: { pharmacyId: this.state.pharmacyId },
-      success: (res) => {
+    const uri = `/api/prescription?id=${id}`;
+    const dataParams = { pharmacyId: this.state.pharmacyId };
+
+    helpers.putApiData(uri, dataParams)
+      .then((data) => {
         this.setState({
-          orderList: res,
+          orderList: data,
         });
-      },
-      error: () => {
-        console.log('error fetching users from database');
-      },
-    });
+      })
+      .catch((err) => {
+        console.log('error fetching users from database', err);
+      });
   }
 
-  cellButton(cell, row, rowIndex) {
+  cellButton(cell, row) {
     return (
       <form>
         <FormGroup>
@@ -72,7 +69,14 @@ class Order extends React.Component {
             onChange={this.onChangeHandler}
           />
         </FormGroup>
-        <Button type="submit" onClick={this.onClickHandler} value={row.id} bsStyle="primary"> Share </Button>
+        <Button
+          type="submit"
+          onClick={this.onClickHandler}
+          value={row.id}
+          bsStyle="primary"
+        >
+          Share
+        </Button>
       </form>
     );
   }
@@ -81,19 +85,19 @@ class Order extends React.Component {
   render() {
     const options = {
       defaultSortName: 'id',
-      defaultSortOrder: 'desc'
+      defaultSortOrder: 'desc',
     };
 
     return (
       <BootstrapTable bsSize="sm" data={this.state.orderList} striped pagination search options={options}>
-        <TableHeaderColumn dataField='id' width='5%'>Prescription ID</TableHeaderColumn>
-        <TableHeaderColumn dataField='createdAt' isKey width='10%'>Prescription ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="patientId" width='5%'>Patient ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="illnessId" width='5%'>illnessId</TableHeaderColumn>
-        <TableHeaderColumn dataField="doctorNotes" width='10%'>doctorNotes</TableHeaderColumn>
-        <TableHeaderColumn dataField="imageSrc" width='10%'>PrescriptionImage</TableHeaderColumn>
-        <TableHeaderColumn dataField="doctorId" dataFormat={this.cellButton} width='10%'>Doctor ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="pharmacyId" dataFormat={this.cellButton} width='10%'>pharmacyId</TableHeaderColumn>
+        <TableHeaderColumn dataField="id" isKey width="5%">Prescription ID</TableHeaderColumn>
+        <TableHeaderColumn dataField="createdAt" width="10%">Prescription ID</TableHeaderColumn>
+        <TableHeaderColumn dataField="patientId" width="5%">Patient ID</TableHeaderColumn>
+        <TableHeaderColumn dataField="illnessId" width="5%">illnessId</TableHeaderColumn>
+        <TableHeaderColumn dataField="doctorNotes" width="10%">doctorNotes</TableHeaderColumn>
+        <TableHeaderColumn dataField="imageSrc" width="10%">PrescriptionImage</TableHeaderColumn>
+        <TableHeaderColumn dataField="doctorId" dataFormat={this.cellButton} width="10%">Doctor ID</TableHeaderColumn>
+        <TableHeaderColumn dataField="pharmacyId" dataFormat={this.cellButton} width="10%">pharmacyId</TableHeaderColumn>
       </BootstrapTable>
     );
   }

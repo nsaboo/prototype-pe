@@ -1,41 +1,6 @@
 import React from 'react';
-import $ from 'jquery';
-import { Table } from 'react-bootstrap';
-
-const HospitalTableHead = () => {
-  return <thead>
-    <tr>
-      <th> Name </th>
-      <th> Email </th>
-      <th> Contact </th>
-      <th> cityId </th>
-    </tr>
-  </thead>
-};
-
-const HospitalTableRow = (props) => (
-  <tr>
-    <td> {props.item.name} </td>
-    <td> {props.item.email} </td>
-    <td> {props.item.contact} </td>
-    <td> {props.item.cityId} </td>
-  </tr>
-);
-
-const HospitalTableBody = (props) => {
-  const hospitalBody = props.list.map((item) => {
-    return (
-      <HospitalTableRow key={item.id} item={item} />
-    )
-  });
-
-  return(
-    <tbody>
-      { hospitalBody }
-    </tbody>
-  );
-};
-
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import helpers from '../helpers/index';
 
 class Hospital extends React.Component {
   constructor(props) {
@@ -47,26 +12,41 @@ class Hospital extends React.Component {
   }
 
   componentDidMount() {
-    $.ajax({
-      url: '/api/hospital',
-      type: 'GET',
-      success: (res) => {
+    const uri = '/api/hospital';
+
+    helpers.getApiData(uri)
+      .then((data) => {
         this.setState({
-          hospitalList: res
+          hospitalList: data,
         });
-      },
-      error: () => {
-        console.log('error fetching users from database');
-      }
-    });
+      })
+      .catch((err) => {
+        console.log('error fetching users from database', err);
+      });
   }
 
   render() {
-    return(
-      <Table responsive>
-        <HospitalTableHead />
-        <HospitalTableBody list={this.state.hospitalList} />
-      </Table>
+    const options = {
+      defaultSortName: 'createdAt',
+      defaultSortOrder: 'asc',
+    };
+
+    return (
+      <BootstrapTable
+        bsSize="sm"
+        data={this.state.hospitalList}
+        striped
+        pagination
+        search
+        options={options}
+      >
+        <TableHeaderColumn dataField="id" isKey width="5%">Hospital ID</TableHeaderColumn>
+        <TableHeaderColumn dataField="createdAt" width="10%">createdAt</TableHeaderColumn>
+        <TableHeaderColumn dataField="name" width="5%">Name</TableHeaderColumn>
+        <TableHeaderColumn dataField="email" width="5%">Email</TableHeaderColumn>
+        <TableHeaderColumn dataField="contact" width="10%">Contact</TableHeaderColumn>
+        <TableHeaderColumn dataField="cityId" width="10%">cityId</TableHeaderColumn>
+      </BootstrapTable>
     );
   }
 }
