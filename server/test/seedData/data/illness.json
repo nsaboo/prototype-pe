@@ -15,6 +15,33 @@
     "category": "Cold"
   },
   {
+    "category": "Ulcer"
+  },
+  {
+    "category": "Fever"
+  },
+  {
+    "category": "Dengue"
+  },
+  {
+    "category": "Cold"
+  },
+  {
+    "category": "Cough"
+  },
+  {
+    "category": "Flu"
+  },
+  {
+    "category": "Abc"
+  },
+  {
+    "category": "Xyz"
+  },
+  {
+    "category": "Lmn"
+  },
+  {
     "category": "Others"
   }
 ]

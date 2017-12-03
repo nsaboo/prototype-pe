@@ -1,16 +1,16 @@
 const rp = require('request-promise');
-const helpers = require('../helpers/');
-const cities = require('./data/cities.json');
+const helpers = require('../../helpers/');
+const patients = require('../data/patients.json');
 
 
-const createCity = (city) => {
+const createPatient = (patient) => {
   const options = {
     method: 'POST',
-    uri: `${helpers.CONSUMER_URL}/city`,
+    uri: `${helpers.CONSUMER_URL}/patient`,
     headers: {
       'content-type': 'application/json',
     },
-    body: { city },
+    body: patient,
     json: true,
   };
 
@@ -23,14 +23,13 @@ const createCity = (city) => {
     });
 };
 
-const seedCity = () => {
-  cities.forEach((city) => {
-    createCity(city);
+const seedPatient = () => {
+  patients.forEach((patient) => {
+    createPatient(patient);
   });
 };
 
-seedCity();
 
 module.exports = {
-  seedCity,
+  seedPatient,
 };

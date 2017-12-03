@@ -16,7 +16,7 @@ describe('Server Illness Spec', () => {
 
   it('should get all illness', (done) => {
     request
-      .get('/illness')
+      .get('/api/illness')
       .expect(200, done);
   });
 
@@ -26,7 +26,7 @@ describe('Server Illness Spec', () => {
     };
 
     request
-      .post('/illness')
+      .post('/api/illness')
       .send(illnessParams)
       .set('Accept', 'application/json')
       .expect(201, done);

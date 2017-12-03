@@ -24,6 +24,8 @@ const create = prescription => Prescription.create(prescription);
 
 const findAll = params => Prescription.findAll({ where: params });
 
+const update = (updateParams, whereParams) => Prescription.update(updateParams, { where: whereParams });
+
 const sync = () => Prescription.sync();
 
 module.exports = {
@@ -31,4 +33,5 @@ module.exports = {
   create,
   findAll,
   sync,
+  update,
 };

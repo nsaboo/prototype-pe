@@ -1,0 +1,52 @@
+[
+  {
+    "name": "hospital_1",
+    "contact": "91-9876543210",
+    "cityId": "1"
+  },
+  {
+    "name": "hospital_2",
+    "contact": "91-9876543210",
+    "cityId": "2"
+  },
+  {
+    "name": "hospital_3",
+    "contact": "91-9876543210",
+    "cityId": "3"
+  },
+  {
+    "name": "hospital_4",
+    "contact": "91-9876543210",
+    "cityId": "4"
+  },
+  {
+    "name": "hospital_5",
+    "contact": "91-9876543210",
+    "cityId": "5"
+  },
+  {
+    "name": "hospital_6",
+    "contact": "91-9876543210",
+    "cityId": "6"
+  },
+  {
+    "name": "hospital_7",
+    "contact": "91-9876543210",
+    "cityId": "7"
+  },
+  {
+    "name": "hospital_8",
+    "contact": "91-9876543210",
+    "cityId": "8"
+  },
+  {
+    "name": "hospital_9",
+    "contact": "91-9876543210",
+    "cityId": "9"
+  },
+  {
+    "name": "hospital_10",
+    "contact": "91-9876543210",
+    "cityId": "10"
+  }
+]

@@ -16,7 +16,7 @@ describe('Server City Spec', () => {
 
   it('should get all city', (done) => {
     request
-      .get('/city')
+      .get('/api/city')
       .expect(200, done);
   });
 
@@ -26,7 +26,7 @@ describe('Server City Spec', () => {
     };
 
     request
-      .post('/city')
+      .post('/api/city')
       .send(cityParams)
       .set('Accept', 'application/json')
       .expect(201, done);

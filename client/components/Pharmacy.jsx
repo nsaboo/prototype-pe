@@ -1,14 +1,40 @@
 import React from 'react';
 import $ from 'jquery';
+import { Table } from 'react-bootstrap';
 
-const PharmacyItem = (props) => (
-  <div>
-    <span> {props.item.id} </span>
-    <span> {props.item.name} </span>
-    <span> {props.item.email} </span>
-    <span> {props.item.mobile} </span>
-  </div>
+const PharmacyTableHead = () => {
+  return <thead>
+    <tr>
+      <th> Name </th>
+      <th> Email </th>
+      <th> Mobile </th>
+      <th> cityId </th>
+    </tr>
+  </thead>
+};
+
+const PharmacyTableRow = (props) => (
+  <tr>
+    <td> {props.item.name} </td>
+    <td> {props.item.email} </td>
+    <td> {props.item.mobile} </td>
+    <td> {props.item.cityId} </td>
+  </tr>
 );
+
+const PharmacyTableBody = (props) => {
+  const pharmacyBody = props.list.map((item) => {
+    return (
+      <PharmacyTableRow key={item.id} item={item} />
+    )
+  });
+
+  return(
+    <tbody>
+      { pharmacyBody }
+    </tbody>
+  );
+};
 
 
 class Pharmacy extends React.Component {
@@ -36,16 +62,11 @@ class Pharmacy extends React.Component {
   }
 
   render() {
-    const pharmacyList = this.state.pharmacyList.map((pharmacy) => {
-      return (
-        <PharmacyItem key={pharmacy.id} item={pharmacy} />
-      )
-    });
-
     return(
-      <div>
-        { pharmacyList }
-      </div>
+      <Table responsive>
+        <PharmacyTableHead />
+        <PharmacyTableBody list={this.state.pharmacyList} />
+      </Table>
     );
   }
 }

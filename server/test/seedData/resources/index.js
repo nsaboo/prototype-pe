@@ -1,11 +1,11 @@
 const user = require('./user');
 const illness = require('./illness');
 const city = require('./city');
-// const patient = require('./patient');
-// const hospital = require('./hospital');
-// const doctor = require('./doctor');
+const patient = require('./patient');
+const hospital = require('./hospital');
+const doctor = require('./doctor');
 // const laboratory = require('./laboratory');
-// const prescription = require('./prescription');
+const prescription = require('./prescription');
 const pharmacy = require('./pharmacy');
 // const insurer = require('./insurer');
 // const company = require('./company');
@@ -18,11 +18,11 @@ module.exports = {
   user,
   illness,
   city,
-  // patient,
-  // hospital,
-  // doctor,
+  patient,
+  hospital,
+  doctor,
   // laboratory,
-  // prescription,
+  prescription,
   pharmacy,
   // insurer,
   // company,

@@ -47,7 +47,7 @@ class Header extends React.Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#"> PharmEasy </a>
+              <a href="/"> PharmEasy </a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -56,7 +56,7 @@ class Header extends React.Component {
               <LinkContainer to="/">
                 <NavItem eventKey={1}>Home</NavItem>
               </LinkContainer>
-              <LinkContainer to="#">
+              <LinkContainer to="/">
                 <NavItem eventKey={2}>Health & Wellness Products</NavItem>
               </LinkContainer>
               <NavDropdown eventKey={3} title="Health & Checkups" id="basic-nav-dropdown">

@@ -31,6 +31,7 @@ router.post('/laboratory', controller.laboratory.post);
 
 // prescription routes
 router.get('/prescription', controller.prescription.get);
+router.put('/prescription', controller.prescription.put);
 router.post('/prescription', controller.prescription.post);
 
 // pharmacy routes

@@ -1,0 +1,162 @@
+[
+  {
+    "name": "doctor_1",
+    "age": "21",
+    "gender": "1",
+    "email": "doctor_1@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "1"
+  },
+  {
+    "name": "doctor_2",
+    "age": "22",
+    "gender": "1",
+    "email": "doctor_2@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "2"
+  },
+  {
+    "name": "doctor_3",
+    "age": "33",
+    "gender": "0",
+    "email": "doctor_3@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "3"
+  },
+  {
+    "name": "doctor_4",
+    "age": "44",
+    "gender": "1",
+    "email": "doctor_4@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "4"
+  },
+  {
+    "name": "doctor_5",
+    "age": "55",
+    "gender": "1",
+    "email": "doctor_5@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "5"
+  },
+  {
+    "name": "doctor_6",
+    "age": "66",
+    "gender": "0",
+    "email": "doctor_6@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "6"
+  },
+  {
+    "name": "doctor_7",
+    "age": "77",
+    "gender": "0",
+    "email": "doctor_7@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "7"
+  },
+  {
+    "name": "doctor_8",
+    "age": "88",
+    "gender": "1",
+    "email": "doctor_8@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "8"
+  },
+  {
+    "name": "doctor_9",
+    "age": "29",
+    "gender": "0",
+    "email": "doctor_9@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "9"
+  },
+  {
+    "name": "doctor_10",
+    "age": "80",
+    "gender": "1",
+    "email": "doctor_10@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "10"
+  },
+  {
+    "name": "doctor_11",
+    "age": "21",
+    "gender": "1",
+    "email": "doctor_11@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "1"
+  },
+  {
+    "name": "doctor_12",
+    "age": "22",
+    "gender": "1",
+    "email": "doctor_12@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "2"
+  },
+  {
+    "name": "doctor_13",
+    "age": "33",
+    "gender": "0",
+    "email": "doctor_13@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "3"
+  },
+  {
+    "name": "doctor_14",
+    "age": "44",
+    "gender": "1",
+    "email": "doctor_14@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "4"
+  },
+  {
+    "name": "doctor_15",
+    "age": "55",
+    "gender": "1",
+    "email": "doctor_15@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "5"
+  },
+  {
+    "name": "doctor_16",
+    "age": "66",
+    "gender": "0",
+    "email": "doctor_16@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "6"
+  },
+  {
+    "name": "doctor_17",
+    "age": "77",
+    "gender": "0",
+    "email": "doctor_17@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "7"
+  },
+  {
+    "name": "doctor_18",
+    "age": "88",
+    "gender": "1",
+    "email": "doctor_18@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "8"
+  },
+  {
+    "name": "doctor_19",
+    "age": "29",
+    "gender": "0",
+    "email": "doctor_19@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "9"
+  },
+  {
+    "name": "doctor_20",
+    "age": "80",
+    "gender": "1",
+    "email": "doctor_20@xyz.com",
+    "mobile": "91-9876543210",
+    "cityId": "10"
+  }
+]
