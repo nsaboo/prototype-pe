@@ -18,8 +18,9 @@
       - [local](#local)
       - [configure .eslintrc (global/local)](#configure-eslintrc-globallocal)
     - [Tmux Configuration](#tmux-configuration)
-  - [System Architecture](#system-architecture)
-  - [Schema Design](#schema-design)
+  - [PharmEasy EcoSystem](#pharmeasy-ecosystem)
+  - [PharmEasy System Architecture](#pharmeasy-system-architecture)
+  - [PharmEasy Schema Design](#pharmeasy-schema-design)
   - [Development](#development)
     - [npm Scripts](#npm-scripts)
       - [install](#install)
@@ -127,10 +128,13 @@ brew install Tmux
 bash tools/tmux.sh
 ```
 
-## System Architecture
+## PharmEasy EcoSystem
+![PharmEasy EcoSystem](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/PharmEasy.png)
+
+## PharmEasy System Architecture
 ![System Architecture](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/prototype-pe.png)
 
-## Schema Design
+## PharmEasy Schema Design
 ![Schema Design](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/SchemaDesign.png)
 
 ## Development

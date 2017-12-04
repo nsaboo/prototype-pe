@@ -38,7 +38,6 @@ class Header extends React.Component {
 
   handleNav(e) {
     e.preventDefault();
-    console.log('nav href ', e.target.href);
   }
 
   render() {
