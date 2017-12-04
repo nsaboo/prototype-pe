@@ -3,6 +3,7 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Project Name](#project-name)
+  - [PharmEasy EcoSystem](#pharmeasy-ecosystem)
   - [Roadmap](#roadmap)
   - [Contributing](#contributing)
   - [Usage](#usage)
@@ -18,7 +19,6 @@
       - [local](#local)
       - [configure .eslintrc (global/local)](#configure-eslintrc-globallocal)
     - [Tmux Configuration](#tmux-configuration)
-  - [PharmEasy EcoSystem](#pharmeasy-ecosystem)
   - [PharmEasy System Architecture](#pharmeasy-system-architecture)
   - [PharmEasy Schema Design](#pharmeasy-schema-design)
   - [Development](#development)
@@ -48,6 +48,9 @@
 # Project Name
 
 prototype-pe (prototype PharmEasy)
+
+## PharmEasy EcoSystem
+![PharmEasy EcoSystem](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/PharmEasy.png)
 
 ## Roadmap
 
@@ -128,11 +131,8 @@ brew install Tmux
 bash tools/tmux.sh
 ```
 
-## PharmEasy EcoSystem
-![PharmEasy EcoSystem](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/PharmEasy.png)
-
 ## PharmEasy System Architecture
-![System Architecture](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/prototype-pe.png)
+![System Architecture](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/Prototype-PE.png)
 
 ## PharmEasy Schema Design
 ![Schema Design](https://raw.github.com/nsaboo/prototype-pe/master/docs/images/SchemaDesign.png)
