@@ -265,6 +265,7 @@ DOCKER-STACK-INSTANCE on 9200
 
 ### API Documentation (get, put, post)
 ```
+# API end points
 http://localhost:3000/api/user
 http://localhost:3000/api/illness
 http://localhost:3000/api/city
