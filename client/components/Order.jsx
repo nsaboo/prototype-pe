@@ -10,7 +10,7 @@ class Order extends React.Component {
 
     this.state = {
       orderList: [],
-      pharmacyId: '',
+      inputId: '',
     };
 
     this.cellButton = this.cellButton.bind(this);
@@ -33,24 +33,30 @@ class Order extends React.Component {
   }
 
   onChangeHandler(e) {
-    const pharmacyId = e.target.value;
+    const inputId = e.target.value;
 
     this.setState({
-      pharmacyId,
+      inputId,
     });
   }
 
-  onClickHandler(e) {
+  onClickHandler(e, cell, row, enumObject, rowIndex) {
     e.preventDefault();
-    const id = e.target.value;
+    const rowId = e.target.value;
 
-    const uri = `/api/prescription?id=${id}`;
-    const dataParams = { pharmacyId: this.state.pharmacyId };
+    const uri = `/api/prescription?id=${rowId}`;
+    let dataParams;
+    if (enumObject === 'doctor') {
+      dataParams = { doctorId: this.state.inputId };
+    } else {
+      dataParams = { pharmacyId: this.state.inputId };
+    }
 
     helpers.putApiData(uri, dataParams)
       .then((data) => {
+        console.log(`Shared Prescription id: ${rowId} with ${enumObject} id: ${this.state.inputId}`);
         this.setState({
-          orderList: data,
+          inputId: '',
         });
       })
       .catch((err) => {
@@ -58,7 +64,7 @@ class Order extends React.Component {
       });
   }
 
-  cellButton(cell, row) {
+  cellButton(cell, row, enumObject, rowIndex) {
     return (
       <form>
         <FormGroup>
@@ -71,8 +77,9 @@ class Order extends React.Component {
         </FormGroup>
         <Button
           type="submit"
-          onClick={this.onClickHandler}
+          onClick={e => this.onClickHandler(e, cell, row, enumObject, rowIndex)}
           value={row.id}
+          field={enumObject}
           bsStyle="primary"
         >
           Share
@@ -96,8 +103,8 @@ class Order extends React.Component {
         <TableHeaderColumn dataField="illnessId" width="5%">illnessId</TableHeaderColumn>
         <TableHeaderColumn dataField="doctorNotes" width="10%">doctorNotes</TableHeaderColumn>
         <TableHeaderColumn dataField="imageSrc" width="10%">PrescriptionImage</TableHeaderColumn>
-        <TableHeaderColumn dataField="doctorId" dataFormat={this.cellButton} width="10%">Doctor ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="pharmacyId" dataFormat={this.cellButton} width="10%">pharmacyId</TableHeaderColumn>
+        <TableHeaderColumn dataField="doctorId" dataFormat={this.cellButton} formatExtraData="doctor" width="10%">Doctor ID</TableHeaderColumn>
+        <TableHeaderColumn dataField="pharmacyId" dataFormat={this.cellButton} formatExtraData="pharmacy" width="10%">pharmacy ID</TableHeaderColumn>
       </BootstrapTable>
     );
   }
